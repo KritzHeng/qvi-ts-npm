@@ -1,11 +1,29 @@
 {
   "name": "qvi-ts",
   "version": "0.1.0",
-  "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/signify-ts.mjs",
+      "require": "./dist/signify-ts.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
   "author": "Kevin Griffin",
   "license": "Apache-2.0",
   "packageManager": "yarn@3.6.3",
   "scripts": {
+    "start": "npm run build:esm -- --watch",
+    "build:cjs": "esbuild src/index.ts --bundle --outfile=dist/signify-ts.cjs --platform=neutral --format=cjs --sourcemap --packages=external",
+    "build:esm": "esbuild src/index.ts --bundle --outfile=dist/signify-ts.mjs --platform=neutral --format=esm --sourcemap --packages=external",
+    "build:types": "tsc -p tsconfig.build.json",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "prepare": "npm run build",
     "test": "jest",
     "pretty": "prettier --config .prettierrc 'src/**/*.ts' 'test/**/*.ts' --write"
   },
@@ -13,6 +31,7 @@
     "signify-ts": "https://github.com/WebOfTrust/signify-ts#development"
   },
   "devDependencies": {
+    "esbuild": "^0.19.5",
     "@jest/globals": "^29.7.0",
     "@types/prettier": "^3",
     "@yarnpkg/pnpify": "^4.0.0-rc.51",

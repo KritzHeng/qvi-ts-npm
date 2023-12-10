@@ -20,3 +20,12 @@ Test
 ```
 yarn test
 ```
+
+
+
+run build before for the output in `dist/` directory.
+```
+npm run build
+```
+
+
