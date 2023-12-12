@@ -28,7 +28,7 @@
     "pretty": "prettier --config .prettierrc 'src/**/*.ts' 'test/**/*.ts' --write"
   },
   "dependencies": {
-    "signify-ts": "https://github.com/WebOfTrust/signify-ts#development"
+    "signify-ts": "https://github.com/WebOfTrust/signify-ts#2d3443f0598c9707630dae62970f73f05d9e2aee"
   },
   "devDependencies": {
     "esbuild": "^0.19.5",
